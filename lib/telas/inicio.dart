@@ -38,7 +38,7 @@ class _InicioState extends State<Inicio> {
                   );
                 }, 
                 separatorBuilder: (context, index) {
-                 return Divider(color: Colors.red, height: 2,);
+                 return Divider(color: Colors.grey, height: 2,);
                 }, 
                 itemCount: snapshot.data.length
                 );
