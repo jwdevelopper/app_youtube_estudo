@@ -1,4 +1,5 @@
 //AIzaSyAgrqs7j5KPxXlln1Evf4Xl0b--4lCCjTY
+import 'package:app_youtube/CustomSearchDelegate.dart';
 import 'package:app_youtube/telas/alta.dart';
 import 'package:app_youtube/telas/biblioteca.dart';
 import 'package:app_youtube/telas/inicio.dart';
@@ -29,17 +30,20 @@ class _HomeState extends State<Home> {
         title: Image.asset("imagens/youtube.png", width: 98, height: 22,),
         actions: [
           IconButton(
-            icon: Icon(Icons.videocam),
-            onPressed: (){},
+            icon: Icon(Icons.search),
+            onPressed: (){
+              showSearch(context: context, 
+              delegate: CustomSearchDelegate());
+            },
           ),
-          IconButton(
+          /*IconButton(
             icon: Icon(Icons.search),
             onPressed: (){},
           ),
           IconButton(
             icon: Icon(Icons.account_circle),
             onPressed: (){},
-          ),
+          ),*/
         ],
       ),
       body: Container(
