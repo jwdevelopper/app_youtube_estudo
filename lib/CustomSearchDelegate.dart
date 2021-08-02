@@ -5,21 +5,20 @@ class CustomSearchDelegate extends SearchDelegate<String> {
   List<Widget> buildActions(BuildContext context) {
     return [
       IconButton(
-        icon: Icon(Icons.clear), 
-        onPressed: (){
-          query = "";
-        }),
+          icon: Icon(Icons.clear),
+          onPressed: () {
+            query = "";
+          }),
     ];
   }
 
   @override
   Widget buildLeading(BuildContext context) {
     return IconButton(
-        icon: Icon(Icons.arrow_back), 
-        onPressed: (){
-          close(context, null);
+        icon: Icon(Icons.arrow_back),
+        onPressed: () {
+          close(context, "");
         });
-    
   }
 
   @override
@@ -30,7 +29,25 @@ class CustomSearchDelegate extends SearchDelegate<String> {
 
   @override
   Widget buildSuggestions(BuildContext context) {
+    /*TODO EXEMPLO DE SUGESTÕES!
+    List<String> lista = [];
+    if (query.isNotEmpty) {
+      lista = ["Mobx", "Modular", "Clean Archteture", "Flutter"].where(
+        (texto) => texto.toLowerCase().startsWith(query.toLowerCase())
+      ).toList();
+      return ListView.builder(itemBuilder: (context, index) {
+        return ListTile(
+          onTap: (){
+            close(context, lista[index]);
+          },
+          title: Text(lista[index]),
+        );
+      });
+    } else {
+      return Center(
+        child: Text("Nenhum resultado para a pesquisa"),
+      );
+    }*/
     return Container();
   }
-
 }

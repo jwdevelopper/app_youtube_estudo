@@ -12,11 +12,12 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  String _resultado = "";
   int _indiceAtual = 0;
   @override
   Widget build(BuildContext context) {
     List<Widget> telas = [
-      Inicio(),
+      Inicio(_resultado),
       Alta(),
       Inscricao(),
       Biblioteca(),
@@ -34,6 +35,9 @@ class _HomeState extends State<Home> {
             onPressed: () async {
               String res = await showSearch(context: context, 
               delegate: CustomSearchDelegate());
+              setState(() {
+                              _resultado = res;
+                            });
               print("resultado: digitado " + res);
             },
           ),

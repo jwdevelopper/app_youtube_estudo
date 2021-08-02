@@ -1,17 +1,23 @@
 import 'package:app_youtube/api.dart';
 import 'package:app_youtube/model/video.dart';
 import 'package:flutter/material.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class Inicio extends StatefulWidget {
+
+  String pesquisa;
+
   @override
   _InicioState createState() => _InicioState();
+
+  Inicio(this.pesquisa);
 }
 
 class _InicioState extends State<Inicio> {
 
-  Future<List<Video>> _listarVideos() {
+  Future<List<Video>> _listarVideos(String pesquisa) {
     Api api = Api();
-    return api.pesquisar("");
+    return api.pesquisar(pesquisa);
   }
 
   @override
@@ -33,7 +39,8 @@ class _InicioState extends State<Inicio> {
                 itemBuilder: (context, index){
                   List<Video> videos = snapshot.data;
                   Video video = videos[index];
-                  return Column(
+                  return GestureDetector(
+                    child: Column(
                     children: [
                       Container(
                         height: 200,
@@ -49,6 +56,7 @@ class _InicioState extends State<Inicio> {
                         subtitle: Text(video.canal),
                       )
                     ],
+                  ),
                   );
                 }, 
                 separatorBuilder: (context, index) {
@@ -63,7 +71,7 @@ class _InicioState extends State<Inicio> {
             
         }
       },
-      future: _listarVideos(),
+      future: _listarVideos(widget.pesquisa),
     );
   }
 }
